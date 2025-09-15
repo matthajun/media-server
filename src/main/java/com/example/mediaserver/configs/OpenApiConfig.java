@@ -8,17 +8,15 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class OpenApiConfig {
-    @Bean
-    public OpenAPI openAPI() {
-        return new OpenAPI()
-                .components(new Components())
-                .info(apiInfo());
-    }
+  @Bean
+  public OpenAPI openApi() {
+    return new OpenAPI().components(new Components()).info(apiInfo());
+  }
 
-    private Info apiInfo() {
-        return new Info()
-                .title("Media server API")
-                .description("Media server API 명세서")
-                .version("1.0.0");
-    }
+  private Info apiInfo() {
+    return new Info()
+        .title("Media server API")
+        .description("Media server API 명세서")
+        .version("1.0.0");
+  }
 }
