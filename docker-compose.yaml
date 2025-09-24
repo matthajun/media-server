@@ -12,6 +12,10 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/media_db
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
+      - MINIO_URL=http://minio:9000
+      - MINIO_ACCESS_KEY=user
+      - MINIO_SECRET_KEY=password
+      - MINIO_BUCKET_NAME=know
 
   db:
     image: postgres
@@ -24,5 +28,20 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
     restart: 'always'
+
+  minio:
+    image: minio/minio:latest
+    command: server --console-address ":9001" /data
+    environment:
+      MINIO_ROOT_USER: user
+      MINIO_ROOT_PASSWORD: password
+    restart: always
+    shm_size: '1gb'
+    ports:
+      - '9001:9001'
+    volumes:
+      - 'minio_data:/data'
+
 volumes:
   db_data:
+  minio_data:

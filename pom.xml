@@ -72,6 +72,12 @@
 			<version>1.18.40</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<dependency>
+    		<groupId>io.minio</groupId>
+    		<artifactId>minio</artifactId>
+    		<version>8.5.17</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -120,7 +126,7 @@
 						<importOrder/>
 					</java>
 				</configuration>
-			</plugin>			
+			</plugin>
 		</plugins>
 	</build>
 </project>
